@@ -1,0 +1,490 @@
+% This is a general template file for the LaTeX package SVJour3
+% for Springer journals. Original by Springer Heidelberg, 2010/09/16
+%
+% Use it as the basis for your article. Delete % signs as needed.
+%
+% This template includes a few options for different layouts and
+% content for various journals. Please consult a previous issue of
+% your journal as needed.
+%
+\RequirePackage{fix-cm}
+%
+%\documentclass{svjour3}                     % onecolumn (standard format)
+%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+\documentclass[smallextended]{svjour3}       % onecolumn (second format)
+%\documentclass[twocolumn]{svjour3}          % twocolumn
+%
+\smartqed  % flush right qed marks, e.g. at end of proof
+%
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{afterpage}
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+\newcommand{\myparagraph}[1]{\paragraph{#1}\mbox{}\\\mbox{}\\}
+\usepackage{setspace}
+\doublespacing
+%
+% insert here the call for the packages your document requires
+%\usepackage{mathptmx}      % use Times fonts if available on your TeX system
+%\usepackage{latexsym}
+% etc.
+%
+% please place your own definitions here and don't use \def but
+% \newcommand{}{}
+%
+% Insert the name of "your journal" with
+% \journalname{myjournal}
+%
+\begin{document}
+
+\title{ITRDB synthesis and comparative modeling} %COMMENT: OK?
+
+%\thanks{NSF grants AGS1602564 and 1751535 as well as an AWS computing award.} %COMMENT: get correct verbiage
+
+% Grants or other notes about the article that should go on the front
+% page should be placed within the \thanks{} command in the title
+% (and the %-sign in front of \thanks{} should be deleted)
+%
+% General acknowledgments should be placed at the end of the article.
+
+
+
+\titlerunning{ITRDB synthesis}        % if too long for running head
+\author{Benton, Brandon N. \and Ault, Toby R.}
+
+
+%\authorrunning{Short form of author list} % if too long for running head
+
+\institute{Benton, Brandon N. \at
+              \email{bnb32@cornell.edu}           %  \\
+%             \emph{Present address:} of F. Author  %  if needed
+           \and
+           Ault, Toby R. \at
+              \email{tra38@cornell.edu}
+}
+
+\date{Received: date / Accepted: date}
+% The correct dates will be entered by the editor
+
+\maketitle
+
+\begin{abstract}
+Four different methods for de-trending time series of tree ring widths 
+and constructing chronologies are compared and examined for 
+differences in frequency content. Analysis of the different chronologies 
+is performed using a combination of multiple-taper spectrum estimation 
+methods (MTM) and principal-components analysis using singular-value 
+decomposition (SVD). 
+
+%\keywords{Hurricanes \and downscaling \and climatology}
+% \PACS{PACS code1 \and PACS code2 \and more}
+% \subclass{MSC code1 \and MSC code2 \and more}
+\end{abstract}
+\keywords{Tree-rings \and Hurricanes \and Last Millennium Ensemble \and
+  Paleoclimate \and Climate modeling}
+
+\section{Introduction}
+\label{intro}
+
+\section{Data and Methods}
+\label{methods}
+Tree-ring chronologies are constructed by combining multiple tree-ring segments. These segments are first de-trended to remove natural growth patterns. De-trending is performed by fitting a function to ring-width series from the segments and then dividing the ring-width series by the fitted function. The resulting data are called ring-width indices. These are then pieced together to construct complete chronologies. In this work we took four different approaches to the detrending step and then analyzed the resulting chronologies. The objective was to determine how the detrending approach might effect the conclusions drawn from the final chronologies.  
+\subsection{Data}
+The data that was used in de-trending and chronology construction was from the International Tree-Ring Data Bank (ITRDB). This data provided raw tree-ring width time series along with information on the different sites where the tree-ring cores were initially collected.  
+\subsection{Methods}
+\subsubsection{Detrending}
+The four different approaches we took to de-trending are as follows: (1) "Traditional": De-trending performed with a spline function using all segments and $50\%$ of variance removed at $2/3$ segment length. (2) "Agressive": De-trending with spline using all segments and $95\%$ of variance removed at time-scales greater than 30 years. (3) "Low frequency preseving with all segments": De-trending performed with a negative exponential function using all segments, with reversion to spline upon failure with exponential. (4) "Long segments": Using segments at least 250 years long with correlation between detrending function and chronology at least 0.9. (4.1) Using spline with $95\%$ variance removed at segment length. (4.2) Using spline with $95\%$ variance removed at 250 years. (4.3) Negative exponential used with reversion to spline upon failure, with $95\%$ variance removed at segment length. These de-trending approaches are summarized in table \ref{dt_schemes}. Each of these schemes are applied to the cases summarized in table \ref{cases}. 
+  
+\subsubsection{MTM-SVD}
+
+\section{Results}
+\label{results}
+
+
+\section{Summary and Discussion}
+
+%\begin{acknowledgements}
+%If you'd like to thank anyone, place your comments here
+%and remove the percent signs.
+%\end{acknowledgements}
+
+\bibliographystyle{spphys}
+\bibliography{itrdb.bib} 
+
+\clearpage
+\newpage
+
+\begin{table}[!tbp]
+\centering
+\begin{tabular}{lrrr}
+\toprule
+             Scheme Number &     Description \\
+\midrule
+
+1 & Spline, all segments, $50\%$ of $\sigma^2$ removed at $2/3$ length \\
+2 & Spline, all segments, $95\%$ of $\sigma^2$ removed above 30 years \\
+3 & Exponential, all segments, revert to spline on failure \\
+4.1 & Spline, segments $\geq$ 250 years, \\
+& $95\%$ of $\sigma^2$ removed at full length  \\
+4.2 & Spline, segments $\geq$ 250 years, \\
+& $95\%$ of $\sigma^2$ removed at 250 years \\
+4.3 & Exponential, segments $\geq$ 250 years, \\
+& $95\%$ of $\sigma^2$ removed at full length, revert to spline on failure \\
+
+\bottomrule
+\end{tabular}
+\caption{Detrending Schemes}
+\label{dt_schemes}
+\end{table}
+
+
+\begin{table}[!tbp]
+\centering
+\begin{tabular}{lrrr}
+\toprule
+             Case Number & Time Period & Number of Sites \\
+\midrule
+
+1 & 1500-2010 & 467 \\
+2 & 1700-1850 & 1220 \\
+
+\bottomrule
+\end{tabular}
+\caption{Case Summary}
+\label{cases}
+\end{table}
+
+\clearpage
+\newpage
+
+
+%%%%%
+
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline50pct67wl_lateHolocene_seglen0_compsig.png}
+
+\noindent\fbox{\parbox{\textwidth}{%
+\centering
+total average difference: 0.1033}}
+
+\caption{Significance Comparison for (1)}
+
+\label{compsig_1}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_compsig.png}
+
+\noindent\fbox{\parbox{\textwidth}{%
+\centering
+total average difference: 0.1447}}
+
+\caption{Significance Comparison for (2)}
+
+\label{compsig_2}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_expspline50pct67wl_lateHolocene_seglen0_compsig.png}
+
+\noindent\fbox{\parbox{\textwidth}{%
+\centering
+total average difference: 0.0964}}
+
+\caption{Significance Comparison for (3)}
+
+\label{compsig_3}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct100wl_lateHolocene_seglen251_compsig.png}
+
+\noindent\fbox{\parbox{\textwidth}{%
+\centering
+total average difference: 0.1442}}
+
+\caption{Significance Comparison for (4.1)}
+
+\label{compsig_4.1}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct250yrs_lateHolocene_seglen251_compsig.png}
+
+\noindent\fbox{\parbox{\textwidth}{%
+\centering
+total average difference: 0.1214}}
+
+\caption{Significance Comparison for (4.2)}
+
+\label{compsig_4.2}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_expspline95pct100wl_lateHolocene_seglen251_compsig.png}
+
+\noindent\fbox{\parbox{\textwidth}{%
+\centering
+total average difference: 0.1006}}
+
+\caption{Significance Comparison for (4.3)}
+
+\label{compsig_4.3}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline50pct67wl_lateHolocene_seglen0_1500-2010_conf.png}
+\caption{Confidence plot for (1) 1500-2010}
+\label{conf_1_1500}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline50pct67wl_lateHolocene_seglen0_1700-1850_conf.png}
+\caption{Confidence plot for (1) 1700-1850}
+\label{conf_1_1700}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1500-2010_conf.png}
+\caption{Confidence plot for (2) 1500-2010}
+\label{conf_2_1500}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1700-1850_conf.png}
+\caption{Confidence plot for (2) 1700-1850}
+\label{conf_2_1700}
+\end{minipage}
+\end{figure}
+
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_expspline50pct67wl_lateHolocene_seglen0_1500-2010_conf.png}
+\caption{Confidence plot for (3) 1500-2010}
+\label{conf_3_1500}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_expspline50pct67wl_lateHolocene_seglen0_1700-1850_conf.png}
+\caption{Confidence plot for (3) 1700-1850}
+\label{conf_3_1700}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct100wl_lateHolocene_seglen251_1500-2010_conf.png}
+\caption{Confidence plot for (4.1) 1500-2010}
+\end{minipage}
+\hfill
+\label{conf_4.1_1500}
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct100wl_lateHolocene_seglen251_1700-1850_conf.png}
+\caption{Confidence plot for (4.1) 1700-1850}
+\label{conf_4.1_1700}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct250yrs_lateHolocene_seglen251_1500-2010_conf.png}
+\caption{Confidence plot for (4.2) 1500-2010}
+\label{conf_4.2_1500}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct250yrs_lateHolocene_seglen251_1700-1850_conf.png}
+\caption{Confidence plot for (4.2) 1700-1850}
+\label{conf_4.2_1700}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_expspline95pct100wl_lateHolocene_seglen251_1500-2010_conf.png}
+\caption{Confidence plot for (4.3) 1500-2010}
+\label{conf_4.3_1500}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_expspline95pct100wl_lateHolocene_seglen251_1700-1850_conf.png}
+\caption{Confidence plot for (4.3) 1700-1850}
+\label{conf_4.3_1700}
+\end{minipage}
+\end{figure}
+
+\clearpage
+\newpage
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1500-2010_13-15_ts.png}
+\caption{1500-2010 Time series plot (scheme 2) for enso peak 1}
+\label{ts_1}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1500-2010_13-15_map.png}
+\caption{1500-2010 Phase plot (scheme 2) for enso peak 1}
+\label{map_1}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1500-2010_175-195_ts.png}
+\caption{1500-2010 Time series plot (scheme 2) for enso peak 2}
+\label{ts_2}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1500-2010_175-195_map.png}
+\caption{1500-2010 Phase plot (scheme 2) for enso peak 2}
+\label{map_2}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1500-2010_21-23_ts.png}
+\caption{1500-2010 Time series plot (scheme 2) for enso peak 3}
+\label{ts_3}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1500-2010_21-23_map.png}
+\caption{1500-2010 Phase plot (scheme 2) for enso peak 3}
+\label{map_3}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1500-2010_295-3_ts.png}
+\caption{1500-2010 Time series plot (scheme 2) for enso peak 4}
+\label{ts_4}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1500-2010_295-3_map.png}
+\caption{1500-2010 Phase plot (scheme 2) for enso peak 4}
+\label{map_4}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1500-2010_32-35_ts.png}
+\caption{1500-2010 Time series plot (scheme 2) for enso peak 5}
+\label{ts_5}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1500-2010_32-35_map.png}
+\caption{1500-2010 Phase plot (scheme 2) for enso peak 5}
+\label{map_5}
+\end{minipage}
+\end{figure}
+
+\clearpage
+\newpage
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1700-1850_13-15_ts.png}
+\caption{1700-1850 Time series plot (scheme 2) for enso peak 1}
+\label{ts_1}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1700-1850_13-15_map.png}
+\caption{1700-1850 Phase plot (scheme 2) for enso peak 1}
+\label{map_1}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1700-1850_175-195_ts.png}
+\caption{1700-1850 Time series plot (scheme 2) for enso peak 2}
+\label{ts_2}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1700-1850_175-195_map.png}
+\caption{1700-1850 Phase plot (scheme 2) for enso peak 2}
+\label{map_2}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1700-1850_21-23_ts.png}
+\caption{1700-1850 Time series plot (scheme 2) for enso peak 3}
+\label{ts_3}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1700-1850_21-23_map.png}
+\caption{1700-1850 Phase plot (scheme 2) for enso peak 3}
+\label{map_3}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1700-1850_295-3_ts.png}
+\caption{1700-1850 Time series plot (scheme 2) for enso peak 4}
+\label{ts_4}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1700-1850_295-3_map.png}
+\caption{1700-1850 Phase plot (scheme 2) for enso peak 4}
+\label{map_4}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1700-1850_32-35_ts.png}
+\caption{1700-1850 Time series plot (scheme 2) for enso peak 5}
+\label{ts_5}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/itrdb_Lyear_spline95pct30yrs_lateHolocene_seglen0_1700-1850_32-35_map.png}
+\caption{1700-1850 Phase plot (scheme 2) for enso peak 5}
+\label{map_5}
+\end{minipage}
+\end{figure}
+
+\end{document}
+% end of file template.tex
